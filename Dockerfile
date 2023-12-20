@@ -1,6 +1,6 @@
 FROM python:3.8-alpine
 LABEL maintainer="Leonid"
-COPY ./requirements.txt ./
+COPY ./techtrends/requirements.txt ./
 COPY ./techtrends ./
 RUN python init_db.py
 RUN pip install -r requirements.txt
