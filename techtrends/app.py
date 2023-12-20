@@ -10,6 +10,7 @@ logging.basicConfig(format='%(levelname)s:%(name)s:%(asctime)s, %(message)s', le
 def get_db_connection():
     connection = sqlite3.connect('database.db')
     connection.row_factory = sqlite3.Row
+    app.config['connection_count'] = app.config['connection_count'] + 1
     return connection
 
 # Function to get a post using its ID
@@ -23,6 +24,7 @@ def get_post(post_id):
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+app.config['connection_count'] = 0
 
 # Define the main route of the web application 
 @app.route('/')
@@ -53,14 +55,23 @@ def about():
 # Define healthz endpoint
 @app.route('/healthz')
 def healthz():
-    return flash('result: OK - healthy'), 200
+    try:
+        connection = get_db_connection()
+        connection.cursor()
+        connection.execute("SELECT * FROM posts")
+        connection.close()
+        return {"result": "OK - healthy"}, 200
+    except Exception:
+        return {"result": "ERROR - unhealthy"}, 500
     
 # Define metrics endpoint
 @app.route('/metrics')
 def metrics():
     connection = get_db_connection()
-    post_count = len(connection.execute('SELECT * FROM posts').fetchall())
-    return {"db_connection_count": app.config['connection_count'], "post_count": post_count}, 200
+    posts = connection.execute('SELECT * FROM posts').fetchall()
+    connection.close()
+    data = {"db_connection_count": app.config['connection_count'], "post_count": len(posts)}
+    return data
 
 # Define the post creation functionality 
 @app.route('/create', methods=('GET', 'POST'))
