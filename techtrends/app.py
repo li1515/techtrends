@@ -1,7 +1,9 @@
 import sqlite3
-
+import logging
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
+
+logging.basicConfig(format='%(levelname)s:%(name)s:%(asctime)s, %(message)s', level=logging.DEBUG)
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
@@ -36,14 +38,29 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
+      logging.debug('A non-existing article is accessed!')
       return render_template('404.html'), 404
     else:
+      logging.debug('Article is retrieved!',post["title"])
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
+    logging.debug('The "About Us" page is retrieved.')
     return render_template('about.html')
+    
+# Define healthz endpoint
+@app.route('/healthz')
+def healthz():
+    return flash('result: OK - healthy'), 200
+    
+# Define metrics endpoint
+@app.route('/metrics')
+def metrics():
+    connection = get_db_connection()
+    post_count = len(connection.execute('SELECT * FROM posts').fetchall())
+    return {"db_connection_count": app.config['connection_count'], "post_count": post_count}, 200
 
 # Define the post creation functionality 
 @app.route('/create', methods=('GET', 'POST'))
@@ -60,7 +77,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-
+            logging.debug('Article is created.',title)
             return redirect(url_for('index'))
 
     return render_template('create.html')
