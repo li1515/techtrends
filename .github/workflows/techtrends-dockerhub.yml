@@ -45,4 +45,4 @@ jobs:
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: ihnatenkolv/techtrends:${{ steps.meta.outputs.tags }}
