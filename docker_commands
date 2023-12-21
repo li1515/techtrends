@@ -5,210 +5,33 @@ docker build -t techtrends .
 docker run -d -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
-docker logs 35c4d54cf61230eae005110a92ca38921c479a1cce4ef09098d6a754a213240a
+docker logs 6edef4401a08ff52a073c1dabffeaef5999f883088bbfb172a1655ce81fc850a
 
 ## Logs from the container running the TechTrends application
- * Serving Flask app 'app' (lazy loading)
+  * Serving Flask app 'app' (lazy loading)
  * Environment: production
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
-WARNING:werkzeug:2023-12-20 22:03:56,978,  * Running on all addresses.
+[Thu, 21 Dec 2023 16:38:38] WARNING [_internal.py._log:225]  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
-INFO:werkzeug:2023-12-20 22:03:56,979,  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
-INFO:werkzeug:2023-12-20 22:05:59,840, 172.17.0.1 - - [20/Dec/2023 22:05:59] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:05:59,869, 172.17.0.1 - - [20/Dec/2023 22:05:59] "GET /static/css/main.css HTTP/1.1" 200 -INFO:werkzeug:2023-12-20 22:06:00,028, 172.17.0.1 - - [20/Dec/2023 22:06:00] "GET /favicon.ico HTTP/1.1" 404 -
---- Logging error ---
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 1085, in emit
-    msg = self.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 929, in format
-    return fmt.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 668, in format
-    record.message = record.getMessage()
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 373, in getMessage
-    msg = msg % self.args
-TypeError: not all arguments converted during string formatting
-Call stack:
-  File "/usr/local/lib/python3.8/threading.py", line 890, in _bootstrap
-    self._bootstrap_inner()
-  File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
-    self.run()
-  File "/usr/local/lib/python3.8/threading.py", line 870, in run
-    self._target(*self._args, **self._kwargs)
-  File "/usr/local/lib/python3.8/socketserver.py", line 683, in process_request_thread
-    self.finish_request(request, client_address)
-  File "/usr/local/lib/python3.8/socketserver.py", line 360, in finish_request
-    self.RequestHandlerClass(request, client_address, self)
-  File "/usr/local/lib/python3.8/socketserver.py", line 747, in __init__
-    self.handle()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 342, in handle
-    BaseHTTPRequestHandler.handle(self)
-  File "/usr/local/lib/python3.8/http/server.py", line 435, in handle
-    self.handle_one_request()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 374, in handle_one_request
-    self.run_wsgi()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
-    execute(self.server.app)
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
-    application_iter = app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2095, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "app.py", line 46, in post
-    logging.debug('Article is retrieved!',post["title"])
-Message: 'Article is retrieved!'
-Arguments: ('2020 CNCF Annual Report',)
-INFO:werkzeug:2023-12-20 22:06:09,614, 172.17.0.1 - - [20/Dec/2023 22:06:09] "GET /1 HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:06:09,646, 172.17.0.1 - - [20/Dec/2023 22:06:09] "GET /static/css/main.css HTTP/1.1" 304 ---- Logging error ---
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 1085, in emit
-    msg = self.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 929, in format
-    return fmt.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 668, in format
-    record.message = record.getMessage()
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 373, in getMessage
-    msg = msg % self.args
-TypeError: not all arguments converted during string formatting
-Call stack:
-  File "/usr/local/lib/python3.8/threading.py", line 890, in _bootstrap
-    self._bootstrap_inner()
-  File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
-    self.run()
-  File "/usr/local/lib/python3.8/threading.py", line 870, in run
-    self._target(*self._args, **self._kwargs)
-  File "/usr/local/lib/python3.8/socketserver.py", line 683, in process_request_thread
-    self.finish_request(request, client_address)
-  File "/usr/local/lib/python3.8/socketserver.py", line 360, in finish_request
-    self.RequestHandlerClass(request, client_address, self)
-  File "/usr/local/lib/python3.8/socketserver.py", line 747, in __init__
-    self.handle()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 342, in handle
-    BaseHTTPRequestHandler.handle(self)
-  File "/usr/local/lib/python3.8/http/server.py", line 435, in handle
-    self.handle_one_request()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 374, in handle_one_request
-    self.run_wsgi()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
-    execute(self.server.app)
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
-    application_iter = app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2095, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "app.py", line 46, in post
-    logging.debug('Article is retrieved!',post["title"])
-Message: 'Article is retrieved!'
-Arguments: ('KubeCon + CloudNativeCon 2021',)
-INFO:werkzeug:2023-12-20 22:06:11,811, 172.17.0.1 - - [20/Dec/2023 22:06:11] "GET /2 HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:06:11,852, 172.17.0.1 - - [20/Dec/2023 22:06:11] "GET /static/css/main.css HTTP/1.1" 304 ---- Logging error ---
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 1085, in emit
-    msg = self.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 929, in format
-    return fmt.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 668, in format
-    record.message = record.getMessage()
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 373, in getMessage
-    msg = msg % self.args
-TypeError: not all arguments converted during string formatting
-Call stack:
-  File "/usr/local/lib/python3.8/threading.py", line 890, in _bootstrap
-    self._bootstrap_inner()
-  File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
-    self.run()
-  File "/usr/local/lib/python3.8/threading.py", line 870, in run
-    self._target(*self._args, **self._kwargs)
-  File "/usr/local/lib/python3.8/socketserver.py", line 683, in process_request_thread
-    self.finish_request(request, client_address)
-  File "/usr/local/lib/python3.8/socketserver.py", line 360, in finish_request
-    self.RequestHandlerClass(request, client_address, self)
-  File "/usr/local/lib/python3.8/socketserver.py", line 747, in __init__
-    self.handle()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 342, in handle
-    BaseHTTPRequestHandler.handle(self)
-  File "/usr/local/lib/python3.8/http/server.py", line 435, in handle
-    self.handle_one_request()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 374, in handle_one_request
-    self.run_wsgi()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
-    execute(self.server.app)
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
-    application_iter = app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2095, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "app.py", line 46, in post
-    logging.debug('Article is retrieved!',post["title"])
-Message: 'Article is retrieved!'
-Arguments: ('Kubernetes v1.20 Release Notes',)
-INFO:werkzeug:2023-12-20 22:06:13,907, 172.17.0.1 - - [20/Dec/2023 22:06:13] "GET /3 HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:06:13,956, 172.17.0.1 - - [20/Dec/2023 22:06:13] "GET /static/css/main.css HTTP/1.1" 304 -DEBUG:root:2023-12-20 22:06:16,304, The "About Us" page is retrieved.
-INFO:werkzeug:2023-12-20 22:06:16,307, 172.17.0.1 - - [20/Dec/2023 22:06:16] "GET /about HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:06:16,331, 172.17.0.1 - - [20/Dec/2023 22:06:16] "GET /static/css/main.css HTTP/1.1" 304 -INFO:werkzeug:2023-12-20 22:06:19,987, 172.17.0.1 - - [20/Dec/2023 22:06:19] "GET /create HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:06:20,015, 172.17.0.1 - - [20/Dec/2023 22:06:20] "GET /static/css/main.css HTTP/1.1" 304 ---- Logging error ---
-Traceback (most recent call last):
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 1085, in emit
-    msg = self.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 929, in format
-    return fmt.format(record)
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 668, in format
-    record.message = record.getMessage()
-  File "/usr/local/lib/python3.8/logging/__init__.py", line 373, in getMessage
-    msg = msg % self.args
-TypeError: not all arguments converted during string formatting
-Call stack:
-  File "/usr/local/lib/python3.8/threading.py", line 890, in _bootstrap
-    self._bootstrap_inner()
-  File "/usr/local/lib/python3.8/threading.py", line 932, in _bootstrap_inner
-    self.run()
-  File "/usr/local/lib/python3.8/threading.py", line 870, in run
-    self._target(*self._args, **self._kwargs)
-  File "/usr/local/lib/python3.8/socketserver.py", line 683, in process_request_thread
-    self.finish_request(request, client_address)
-  File "/usr/local/lib/python3.8/socketserver.py", line 360, in finish_request
-    self.RequestHandlerClass(request, client_address, self)
-  File "/usr/local/lib/python3.8/socketserver.py", line 747, in __init__
-    self.handle()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 342, in handle
-    BaseHTTPRequestHandler.handle(self)
-  File "/usr/local/lib/python3.8/http/server.py", line 435, in handle
-    self.handle_one_request()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 374, in handle_one_request
-    self.run_wsgi()
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 319, in run_wsgi
-    execute(self.server.app)
-  File "/usr/local/lib/python3.8/site-packages/werkzeug/serving.py", line 308, in execute
-    application_iter = app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2095, in __call__
-    return self.wsgi_app(environ, start_response)
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 2077, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1523, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/usr/local/lib/python3.8/site-packages/flask/app.py", line 1509, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
-  File "app.py", line 91, in create
-    logging.debug('Article is created.',title)
-Message: 'Article is created.'
-Arguments: ('Test',)
-INFO:werkzeug:2023-12-20 22:06:34,279, 172.17.0.1 - - [20/Dec/2023 22:06:34] "POST /create HTTP/1.1" 302 -
-INFO:werkzeug:2023-12-20 22:06:34,292, 172.17.0.1 - - [20/Dec/2023 22:06:34] "GET / HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:06:34,353, 172.17.0.1 - - [20/Dec/2023 22:06:34] "GET /static/css/main.css HTTP/1.1" 304 -INFO:werkzeug:2023-12-20 22:06:52,041, 172.17.0.1 - - [20/Dec/2023 22:06:52] "GET /metrics HTTP/1.1" 200 -
-INFO:werkzeug:2023-12-20 22:07:00,802, 172.17.0.1 - - [20/Dec/2023 22:07:00] "GET /healthz HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:38:38] INFO [_internal.py._log:225]  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+[Thu, 21 Dec 2023 16:38:43] DEBUG [app.py.index:46] Main page with '6' articles is shown.
+[Thu, 21 Dec 2023 16:38:43] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:43] "GET / HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:38:43] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:43] "GET /static/css/main.css HTTP/1.1" 304 -
+[Thu, 21 Dec 2023 16:38:44] DEBUG [app.py.get_post:32] Post with ID '1' is retrieved.
+[Thu, 21 Dec 2023 16:38:44] DEBUG [app.py.post:58] Article with title '2020 CNCF Annual Report' is retrieved!
+[Thu, 21 Dec 2023 16:38:45] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:45] "GET /1 HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:38:45] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:45] "GET /static/css/main.css HTTP/1.1" 304 -
+[Thu, 21 Dec 2023 16:38:49] DEBUG [app.py.about:64] The "About Us" page is shown.
+[Thu, 21 Dec 2023 16:38:49] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:49] "GET /about HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:38:49] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:49] "GET /static/css/main.css HTTP/1.1" 304 -
+[Thu, 21 Dec 2023 16:38:53] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:53] "GET /create HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:38:53] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:53] "GET /static/css/main.css HTTP/1.1" 304 -
+[Thu, 21 Dec 2023 16:39:19] DEBUG [app.py.create:103] Article with title 'Evening news' is created.
+[Thu, 21 Dec 2023 16:39:19] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:19] "POST /create HTTP/1.1" 302 -
+[Thu, 21 Dec 2023 16:39:19] DEBUG [app.py.index:46] Main page with '7' articles is shown.
+[Thu, 21 Dec 2023 16:39:19] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:19] "GET / HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:39:19] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:19] "GET /static/css/main.css HTTP/1.1" 304 -
+[Thu, 21 Dec 2023 16:39:28] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:28] "GET /healthz HTTP/1.1" 200 -
+[Thu, 21 Dec 2023 16:39:34] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:34] "GET /metrics HTTP/1.1" 200 -
