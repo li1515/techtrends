@@ -1,7 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  annotations:
   labels:
     app: techtrends
   name: techtrends
@@ -11,20 +10,15 @@ spec:
   selector:
     matchLabels:
       app: techtrends
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
         app: techtrends
     spec:
       containers:
-        - image: ihnatenkolv/techtrends:latest
+        - name: techtrends
+          image: ihnatenkolv/techtrends:latest
           imagePullPolicy: IfNotPresent
-          name: techtrends
           ports:
             - containerPort: 3111
               protocol: TCP
