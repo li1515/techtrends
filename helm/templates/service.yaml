@@ -9,7 +9,7 @@ spec:
   ports:
     - port: 4111
       protocol: TCP
-      targetPort: 3111
+      targetPort: {{ default .Values.service.Port .Values.service.targetPort }}
   selector:
     app: techtrends
   type: ClusterIP
