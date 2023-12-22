@@ -5,7 +5,7 @@ docker build -t techtrends .
 docker run -d -p 7111:3111 techtrends
 
 ## Docker commands used to get the application logs
-docker logs 6edef4401a08ff52a073c1dabffeaef5999f883088bbfb172a1655ce81fc850a
+docker logs c0de91271bfaa7b144e5aa1837a4f88ec0ab584cc0b901e2f5750033946c1ead
 
 ## Logs from the container running the TechTrends application
   * Serving Flask app 'app' (lazy loading)
@@ -13,25 +13,33 @@ docker logs 6edef4401a08ff52a073c1dabffeaef5999f883088bbfb172a1655ce81fc850a
    WARNING: This is a development server. Do not use it in a production deployment.
    Use a production WSGI server instead.
  * Debug mode: off
-[Thu, 21 Dec 2023 16:38:38] WARNING [_internal.py._log:225]  * Running on all addresses.
+[Fri, 22 Dec 2023 08:42:37] WARNING [_internal.py._log:225]  * Running on all addresses.
    WARNING: This is a development server. Do not use it in a production deployment.
-[Thu, 21 Dec 2023 16:38:38] INFO [_internal.py._log:225]  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
-[Thu, 21 Dec 2023 16:38:43] DEBUG [app.py.index:46] Main page with '6' articles is shown.
-[Thu, 21 Dec 2023 16:38:43] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:43] "GET / HTTP/1.1" 200 -
-[Thu, 21 Dec 2023 16:38:43] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:43] "GET /static/css/main.css HTTP/1.1" 304 -
-[Thu, 21 Dec 2023 16:38:44] DEBUG [app.py.get_post:32] Post with ID '1' is retrieved.
-[Thu, 21 Dec 2023 16:38:44] DEBUG [app.py.post:58] Article with title '2020 CNCF Annual Report' is retrieved!
-[Thu, 21 Dec 2023 16:38:45] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:45] "GET /1 HTTP/1.1" 200 -
-[Thu, 21 Dec 2023 16:38:45] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:45] "GET /static/css/main.css HTTP/1.1" 304 -
-[Thu, 21 Dec 2023 16:38:49] DEBUG [app.py.about:64] The "About Us" page is shown.
-[Thu, 21 Dec 2023 16:38:49] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:49] "GET /about HTTP/1.1" 200 -
-[Thu, 21 Dec 2023 16:38:49] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:49] "GET /static/css/main.css HTTP/1.1" 304 -
-[Thu, 21 Dec 2023 16:38:53] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:53] "GET /create HTTP/1.1" 200 -
-[Thu, 21 Dec 2023 16:38:53] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:38:53] "GET /static/css/main.css HTTP/1.1" 304 -
-[Thu, 21 Dec 2023 16:39:19] DEBUG [app.py.create:103] Article with title 'Evening news' is created.
-[Thu, 21 Dec 2023 16:39:19] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:19] "POST /create HTTP/1.1" 302 -
-[Thu, 21 Dec 2023 16:39:19] DEBUG [app.py.index:46] Main page with '7' articles is shown.
-[Thu, 21 Dec 2023 16:39:19] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:19] "GET / HTTP/1.1" 200 -
-[Thu, 21 Dec 2023 16:39:19] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:19] "GET /static/css/main.css HTTP/1.1" 304 -
-[Thu, 21 Dec 2023 16:39:28] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:28] "GET /healthz HTTP/1.1" 200 -
-[Thu, 21 Dec 2023 16:39:34] INFO [_internal.py._log:225] 172.17.0.1 - - [21/Dec/2023 16:39:34] "GET /metrics HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:42:37] INFO [_internal.py._log:225]  * Running on http://172.17.0.2:3111/ (Press CTRL+C to quit)
+[Fri, 22 Dec 2023 08:42:49] DEBUG [app.py.index:45] Main page with '6' articles is shown.
+[Fri, 22 Dec 2023 08:42:49] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:42:49] "GET / HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:42:49] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:42:49] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:42:51] DEBUG [app.py.get_post:31] Post with ID '1' is retrieved.
+[Fri, 22 Dec 2023 08:42:51] DEBUG [app.py.post:57] Article with title '2020 CNCF Annual Report' is retrieved!
+[Fri, 22 Dec 2023 08:42:51] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:42:51] "GET /1 HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:42:52] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:42:52] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:43:00] DEBUG [app.py.get_post:31] Post with ID '1' is retrieved.
+[Fri, 22 Dec 2023 08:43:00] DEBUG [app.py.post:57] Article with title '2020 CNCF Annual Report' is retrieved!
+[Fri, 22 Dec 2023 08:43:00] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:00] "GET /1 HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:43:00] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:00] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:43:05] DEBUG [app.py.get_post:31] Post with ID '35' is retrieved.
+[Fri, 22 Dec 2023 08:43:05] ERROR [app.py.post:54] A non-existing article is accessed!
+[Fri, 22 Dec 2023 08:43:05] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:05] "GET /35 HTTP/1.1" 404 -
+[Fri, 22 Dec 2023 08:43:05] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:05] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:43:08] DEBUG [app.py.about:63] The "About Us" page is shown.
+[Fri, 22 Dec 2023 08:43:08] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:08] "GET /about HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:43:08] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:08] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:43:09] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:09] "GET /create HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:43:09] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:09] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:43:27] DEBUG [app.py.create:102] Article with title 'Morning news' is created.
+[Fri, 22 Dec 2023 08:43:27] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:27] "POST /create HTTP/1.1" 302 -
+[Fri, 22 Dec 2023 08:43:27] DEBUG [app.py.index:45] Main page with '7' articles is shown.
+[Fri, 22 Dec 2023 08:43:27] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:27] "GET / HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:43:27] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:27] "GET /static/css/main.css HTTP/1.1" 304 -
+[Fri, 22 Dec 2023 08:43:35] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:35] "GET /metrics HTTP/1.1" 200 -
+[Fri, 22 Dec 2023 08:43:38] INFO [_internal.py._log:225] 172.17.0.1 - - [22/Dec/2023 08:43:38] "GET /healthz HTTP/1.1" 200 -

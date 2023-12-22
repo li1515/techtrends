@@ -1,19 +1,18 @@
 import sqlite3
 import logging
-import sys
+import os
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
 
-logger = logging.getLogger('')
-logger.setLevel(logging.DEBUG)
-formatter = logging.Formatter('[%(asctime)s] %(levelname)s [%(filename)s.%(funcName)s:%(lineno)d] %(message)s', datefmt='%a, %d %b %Y %H:%M:%S')
-sh = logging.StreamHandler(sys.stdout)
-sh.setFormatter(formatter)
-logger.addHandler(sh)
+def define_log_level():
+    log_level = os.getenv("LOGLEVEL", "DEBUG")
+    log_level = (
+        getattr(logging, log_level.upper())
+        if log_level in ["CRITICAL", "DEBUG", "ERROR", "INFO", "WARNING",]
+        else logging.DEBUG
+    )
 
-# To add STDERR application events recording if required
-# eh.setFormatter(formatter)
-# logger.addHandler(eh)
+    logging.basicConfig(format='[%(asctime)s] %(levelname)s [%(filename)s.%(funcName)s:%(lineno)d] %(message)s', datefmt='%a, %d %b %Y %H:%M:%S', level=log_level)
 
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
@@ -29,7 +28,7 @@ def get_post(post_id):
     post = connection.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
     connection.close()
-    logger.debug("Post with ID '{0}' is retrieved.".format(post_id))
+    logging.debug("Post with ID '{0}' is retrieved.".format(post_id))
     return post
 
 # Define the Flask application
@@ -43,7 +42,7 @@ def index():
     connection = get_db_connection()
     posts = connection.execute('SELECT * FROM posts').fetchall()
     connection.close()
-    logger.debug("Main page with '{0}' articles is shown.".format(len(posts)))
+    logging.debug("Main page with '{0}' articles is shown.".format(len(posts)))
     return render_template('index.html', posts=posts)
 
 # Define how each individual article is rendered 
@@ -52,16 +51,16 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      logger.debug('A non-existing article is accessed!')
+      logging.error('A non-existing article is accessed!')
       return render_template('404.html'), 404
     else:
-      logger.debug("Article with title '{0}' is retrieved!".format(post["title"]))
+      logging.debug("Article with title '{0}' is retrieved!".format(post["title"]))
       return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
 def about():
-    logger.debug('The "About Us" page is shown.')
+    logging.debug('The "About Us" page is shown.')
     return render_template('about.html')
     
 # Define healthz endpoint
@@ -100,7 +99,7 @@ def create():
                          (title, content))
             connection.commit()
             connection.close()
-            logger.debug("Article with title '{0}' is created.".format(title))
+            logging.debug("Article with title '{0}' is created.".format(title))
             return redirect(url_for('index'))
 
     return render_template('create.html')
@@ -108,4 +107,5 @@ def create():
 
 # start the application on port 3111
 if __name__ == "__main__":
+   define_log_level()
    app.run(host='0.0.0.0', port='3111')
