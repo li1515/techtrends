@@ -17,9 +17,9 @@ spec:
         app: {{ .Values.appname }}
     spec:
       containers:
-        - image: ihnatenkolv/techtrends:latest
-          imagePullPolicy: IfNotPresent
-          name: techtrends
+        - image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          name: {{ .Values.appname }}
           ports:
             - containerPort: {{ .Values.containerPort }}
               protocol: {{ .Values.service.protocol }}
